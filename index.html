@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script language="javascript">
+            animals = ["puppy.webp","cat.webp","bunny.webp","penguin.webp","bear.jpeg"];
+            var index = 0;
+
+            $(document).ready(function() {
+                $("#start").click(slides);
+                $("#stop").click(function() {
+                    $("#image img").stop();
+                })
+            })
+            function slides() 
+            {
+                $("#image img").fadeOut(3000, nextSlide);
+            }
+            function nextSlide()
+            {
+                index++;
+                index= index== animals.length? 0: index;
+                $("#image img").attr("src", "images/" + animals[index]);
+                $("#image img").fadeIn(3000, slides);
+            }
+        </script>
+    </head>
+    <body>
+        <h1 style="text-align: center">Pet Slideshow</h1>
+
+        <div id="image">
+            <img src="images/puppy.webp" />
+        </div>
+
+        <div class="container">
+            <button id="start">Start Show</button>
+            <button id="stop">Stop</button>
+        </div>
+    </body>
+</html>
